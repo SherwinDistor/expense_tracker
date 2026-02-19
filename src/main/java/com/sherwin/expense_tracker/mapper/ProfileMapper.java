@@ -7,14 +7,27 @@ import com.sherwin.expense_tracker.domain.entity.ProfileEntity;
 
 @Component
 public class ProfileMapper {
+
   public ProfileEntity toEntity(ProfileDto profileDto) {
     return ProfileEntity.builder()
         .id(profileDto.getId())
         .fullName(profileDto.getFullName())
         .email(profileDto.getEmail())
+        .password(profileDto.getPassword())
         .profileImageURL(profileDto.getProfileImageURL())
         .createdAt(profileDto.getCreatedAt())
         .updatedAt(profileDto.getUpdatedAt())
+        .build();
+  }
+
+  public ProfileDto toDto(ProfileEntity profileEntity) {
+    return ProfileDto.builder()
+        .id(profileEntity.getId())
+        .fullName(profileEntity.getFullName())
+        .email(profileEntity.getEmail())
+        .profileImageURL(profileEntity.getProfileImageURL())
+        .createdAt(profileEntity.getCreatedAt())
+        .updatedAt(profileEntity.getUpdatedAt())
         .build();
   }
 }

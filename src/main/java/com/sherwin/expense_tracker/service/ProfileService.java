@@ -21,8 +21,8 @@ public class ProfileService {
   public ProfileDto registerProfile(ProfileDto profileDto) {
     ProfileEntity newProfile = profileMapper.toEntity(profileDto);
     newProfile.setActivationToken(UUID.randomUUID().toString());
-    profileRepository.save(newProfile);
+    ProfileEntity savedProfile = profileRepository.save(newProfile);
 
-    return profileDto;
+    return profileMapper.toDto(savedProfile);
   }
 }
